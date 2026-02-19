@@ -675,9 +675,9 @@ GameObject:
   - component: {fileID: 744617717}
   - component: {fileID: 744617716}
   - component: {fileID: 744617715}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,10 +869,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwoPlayersOneKeyboard
   p1Move: {fileID: 188875294210835340, guid: 81ae456be9c592a4cb34c8b3808e4493, type: 3}
+  p1Jump: {fileID: -5290304787668453713, guid: 81ae456be9c592a4cb34c8b3808e4493, type: 3}
   p2Move: {fileID: -2152160362467504071, guid: 81ae456be9c592a4cb34c8b3808e4493, type: 3}
+  p2Jump: {fileID: 578426496887905421, guid: 81ae456be9c592a4cb34c8b3808e4493, type: 3}
   p1: {fileID: 643822822}
   p2: {fileID: 297400835}
+  rb1: {fileID: 643822818}
+  rb2: {fileID: 297400836}
   speed: 5
+  jumpVelocity: 0.1
+  p1IsGrounded: 0
+  p2IsGrounded: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
