@@ -1,12 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerOneScript : MonoBehaviour
+public class PlayerTwoScript : MonoBehaviour
 {
-    [Header("Shooting")]
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform shootPoint;
-    [SerializeField] private float projectileSpeed = 12f;
+    
 
     [Header("Movement")]
     [SerializeField] private float MoveSpeed = 5f;
@@ -16,11 +13,10 @@ public class PlayerOneScript : MonoBehaviour
     private Vector2 lookInput;
     private Vector2 moveInput;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("Shielding")]
+    [SerializeField] private GameObject shield;
+    private bool isShielding;
+
 
     // Update is called once per frame
     void Update()
@@ -49,13 +45,10 @@ public class PlayerOneScript : MonoBehaviour
         transform.position += Vector3.up * jumpStep;
     }
 
-    public void OnShoot(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return; //saftey check
+    public void OnShield(InputAction.CallbackContext context)
+    { 
+        isShielding = context.ReadValueAsButton();
+        shield.SetActive(isShielding);
 
-        var proj = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation); //get bullet
-        proj.AddComponent<Rigidbody>().linearVelocity = shootPoint.forward * projectileSpeed; // shoot bullet
     }
-
-
 }
