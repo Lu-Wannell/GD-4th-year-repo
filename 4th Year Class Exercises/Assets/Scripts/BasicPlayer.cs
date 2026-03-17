@@ -26,6 +26,16 @@ public class BasicPlayer : NetworkBehaviour
     public override void OnNetworkDespawn()
     {
         if (!IsOwner) return;
+        moveAction?.Disable();
     }
-   
+
+    private void Update()
+    {
+        if (!IsOwner || !IsSpawned) return;
+
+        Vector2 move = moveAction.ReadValue<Vector2>();
+        Vector3 move3 = new Vector3 (move.x, 0f, move.y) * speed * Time.deltaTime;
+        transform.position += move3;
+    }
+
 }
