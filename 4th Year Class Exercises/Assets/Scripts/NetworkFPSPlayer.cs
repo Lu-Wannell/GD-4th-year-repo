@@ -22,6 +22,10 @@ public class NetworkFPSPlayer : NetworkBehaviour
 
     private float pitch;    //Current up/down camera rotation
 
+
+
+
+
     public override void OnNetworkSpawn()
     {
         cc = GetComponent<CharacterController>();   
@@ -49,16 +53,26 @@ public class NetworkFPSPlayer : NetworkBehaviour
     private void Update()
     {
         //Move (X/Z)
-        Vector2 m = moveAction.ReadValue<Vector2>();
-        Vector3 move = transform.right * m.x + transform.forward * m.y;
-        cc.Move(move * moveSpeed * Time.deltaTime);
+
+
+        if (moveAction != null)
+        {
+            Vector2 m = moveAction.ReadValue<Vector2>();
+            Vector3 move = transform.right * m.x + transform.forward * m.y;
+            cc.Move(move * moveSpeed * Time.deltaTime);
+        }
 
         //Look
-        Vector2 look = lookAction.ReadValue<Vector2>() * lookSensitivity;
-        transform.Rotate(0f, look.x, 0f); // yaw = rotate the whole character left/right around y axis
+        if (lookAction != null)
+        {
+            Vector2 look = lookAction.ReadValue<Vector2>() * lookSensitivity;
+            transform.Rotate(0f, look.x, 0f); // yaw = rotate the whole character left/right around y axis
 
-        pitch -= look.y;// pitch = rotate the pamera pivot up/down(invert look.y by subtracting)
-        pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);//clamp camera so player doesnt turn over
-        cameraPivot.localEulerAngles = new Vector3(pitch,0f,0f); // Apply pitch to the camera pivot only(keeps body upright)
+
+            pitch -= look.y;// pitch = rotate the pamera pivot up/down(invert look.y by subtracting)
+            pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);//clamp camera so player doesnt turn over
+            cameraPivot.localEulerAngles = new Vector3(pitch, 0f, 0f); // Apply pitch to the camera pivot only(keeps body upright)
+
+        }
     }
 }
