@@ -17,12 +17,14 @@ public class NetworkProjectile : NetworkBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        //Only the server should decide when the projectile disappears
         if (IsServer)
             Despawn();
     }
 
     private void Despawn()
     {
+        //Despawn removes it across the network (for everyone)
         if (NetworkObject && NetworkObject.IsSpawned)
             NetworkObject.Despawn();
     }
