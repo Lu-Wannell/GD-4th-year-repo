@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11707928}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1861767419}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: JoinGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &11707928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,7 +861,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 893683633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1861767419}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: StartServerOnly
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &893683633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1810,7 +1834,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1362048838}
-    PlayerPrefab: {fileID: 0}
+    PlayerPrefab: {fileID: 710089952519397831, guid: ba4b6b51cc2cca546aca672821f34ba3, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 8ebcbe8c204945343b10f8bcf3f4735e, type: 2}
@@ -2268,7 +2292,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1580758888}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1861767419}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: StartHost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1580758888
 MonoBehaviour:
   m_ObjectHideFlags: 0
