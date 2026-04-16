@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 710089952519397831}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -205,9 +205,11 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   cameraPivot: {fileID: 5921093687709436870}
   playerCamera: {fileID: 6245022776424859034}
+  animator: {fileID: 6789839137252661835}
   moveSpeed: 5
   lookSensitivity: 0.2
   maxPitch: 80
+  speedParam: Speed
 --- !u!114 &596657862067255429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,8 +274,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.3
+  m_Height: 3.5
+  m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -335,7 +337,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710089952519397831}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5b3fef0b4a736b84cb26fe48edbc07bb, type: 2}
   m_CullingMode: 0
@@ -363,11 +365,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkAnimator
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkAnimatorExpanded: 0
-  AuthorityMode: 0
-  m_Animator: {fileID: 6789839137252661835}
+  AuthorityMode: 1
+  m_Animator: {fileID: 6912873971334019092}
   TransitionStateInfoList: []
   AnimatorParameterEntries:
-    ParameterEntries: []
+    ParameterEntries:
+    - name: Speed
+      NameHash: -823668238
+      Synchronize: 1
+      ParameterType: 1
   AnimatorParametersExpanded: 0
 --- !u!1 &5845343720799678567
 GameObject:
@@ -397,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 5845343720799678567}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 1.443, z: 0.263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -531,7 +537,7 @@ Transform:
   m_GameObject: {fileID: 6215355209141216618}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -820,7 +826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56b99cd2f716b644e9fda9a63dc0e41f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.896
+      value: -1.72
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56b99cd2f716b644e9fda9a63dc0e41f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -861,8 +867,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1664083765829960058, guid: 56b99cd2f716b644e9fda9a63dc0e41f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6912873971334019092}
   m_SourcePrefab: {fileID: 100100000, guid: 56b99cd2f716b644e9fda9a63dc0e41f, type: 3}
+--- !u!1 &2348878757269175865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1664083765829960058, guid: 56b99cd2f716b644e9fda9a63dc0e41f, type: 3}
+  m_PrefabInstance: {fileID: 3999451103249268547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6912873971334019092
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2348878757269175865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b3fef0b4a736b84cb26fe48edbc07bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &3461683630739953832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 56b99cd2f716b644e9fda9a63dc0e41f, type: 3}

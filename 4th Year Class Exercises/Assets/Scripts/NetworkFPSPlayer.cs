@@ -8,11 +8,15 @@ public class NetworkFPSPlayer : NetworkBehaviour
     [Header("PlayerComponents")]
     [SerializeField] private Transform cameraPivot;     //empty child at head height
     [SerializeField] private Camera playerCamera;   //child camera
+    [SerializeField] private Animator animator;
 
     [Header("Player Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float lookSensitivity = 2f;
     [SerializeField] private float maxPitch = 80f;
+
+    [Header("Animator Params")]
+    [SerializeField] private string speedParam = "Speed";
 
     private PlayerInput pi;
     private InputAction moveAction;
@@ -36,7 +40,7 @@ public class NetworkFPSPlayer : NetworkBehaviour
             //Only the owning player should have an active camera and input
             if (playerCamera) playerCamera.enabled = false;
             if (pi) pi.enabled = false;
-            enabled = false;
+            //enabled = false;
             return;
         }
 
@@ -54,10 +58,10 @@ public class NetworkFPSPlayer : NetworkBehaviour
     {
         //Move (X/Z)
 
-
+        Vector2 m = moveAction.ReadValue<Vector2>();
         if (moveAction != null)
         {
-            Vector2 m = moveAction.ReadValue<Vector2>();
+            
             Vector3 move = transform.right * m.x + transform.forward * m.y;
             cc.Move(move * moveSpeed * Time.deltaTime);
         }
@@ -73,6 +77,8 @@ public class NetworkFPSPlayer : NetworkBehaviour
             pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);//clamp camera so player doesnt turn over
             cameraPivot.localEulerAngles = new Vector3(pitch, 0f, 0f); // Apply pitch to the camera pivot only(keeps body upright)
 
+            // drive animation from actual movement input
+            if (animator) animator.SetFloat(speedParam, m.magnitude); // 0 = idle; >0 = Walking m.mag turns 2D input into a single number = "how much is player trying to move"
         }
     }
 }
